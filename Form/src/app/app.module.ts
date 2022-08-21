@@ -1,3 +1,4 @@
+import { PreciosService } from './service/Precios.service';
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +23,9 @@ import { PanellComponent } from './panell/panell.component';
     ReactiveFormsModule
   
   ],
-  providers: [],
+  providers: [
+    PreciosService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

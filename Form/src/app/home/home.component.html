@@ -1,23 +1,25 @@
 
-<p>¿Qué quieres hacer?</p>
-<form >
-  <div>
-    <input formControlName='webPage' (click)="paguinas(500)" type="checkbox" >
-    <label>Fer una pàgina web (500 €)</label>
-  </div>
-  <div *ngIf="mostrar">
-    <app-panell></app-panell>
-  </div>
-  <br>
-  <input formControlName='Seo' (click)="valor(300)" type="checkbox" >
-
-  <label >Fer una campanya SEO (300 €)</label>
-  <br><br>
-
-  <input formControlName='Publicidad'(click)="valor(200)" type="checkbox" >
-
-  <label>Fer una campanya de publicitat (200 €)</label>
-  <br>
-</form>
-
-<p>Preu:{{total}}€</p>
+<div class="container">
+  <p>¿Qué quieres hacer? </p>
+  <form >
+    <div>
+      <input formControlName='webPage' (click)="paguinas(500)" type="checkbox" >
+      <label>Fer una pàgina web (500 €)</label>
+    </div>
+    <div *ngIf="mostrar">
+      <app-panell></app-panell>
+    </div>
+    <br>
+    <input formControlName='Seo' (click)="valor(300)" type="checkbox" >
+  
+    <label >Fer una campanya SEO (300 €)</label>
+    <br><br>
+  
+    <input formControlName='Publicidad'(click)="valor(200)" type="checkbox" >
+  
+    <label>Fer una campanya de publicitat (200 €)</label>
+    <br>
+  </form>
+  
+  <p>Preu:{{totalglobal}}€</p>
+</div>

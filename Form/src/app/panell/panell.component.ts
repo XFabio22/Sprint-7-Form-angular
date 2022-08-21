@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { PreciosService } from './../service/Precios.service';
 
 @Component({
   selector: 'app-panell',
   templateUrl: './panell.component.html',
   styleUrls: ['./panell.component.css']
 })
-export class PanellComponent implements OnInit {
-
-  paginasYIdiomas:FormGroup;
+export class PanellComponent  {
 
 
-  constructor(private _builder : FormBuilder) { 
-    this.paginasYIdiomas = this._builder.group({
-      paginas:['1',Validators.required],
-      idiomas:['1',Validators.compose([Validators.required])]
-    });
+  
+  paginasYIdiomas = new FormGroup({
+    paginas: new FormControl(1),
+    idiomas: new FormControl(1)
+  })
+  
+  
+  datos(){
+    
   }
 
-  ngOnInit(): void {
+
+  constructor(private PreciosService:PreciosService) { 
+
   }
+
+
 
 }

@@ -1,42 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { PreciosService } from './../service/Precios.service';
+import { Component,  } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
   mostrar:boolean = false
 
+  totalglobal:number = 0;
   paguinas(precio:number){
-      this.mostrar = !this.mostrar;
-      this.total += precio
-  }
-
-  precios:number[]=[]
- total:number =0 
-  valor(precio:number){
-    this.total += precio
-    // this.precios.push(precio)
-    console.log(this.precios)
-    // this.calculateTotal()
-  }
-  enviar(values:string){
-    console.log(values)
-  }
-   calculateTotal() {
-    //  this.total = 0
+    this.mostrar = !this.mostrar;
     
-    // for(let i = 0; i < this.precios.length; i++ ){
-    //     this.total += this.precios[i]; 
-    // }
-   
+    this.PreciosService.calculateTotal(precio)
+    this.totalglobal =  this.PreciosService.total;
+  }
+  
+  valor(precio:number){
+    
+    this.PreciosService.calculateTotal(precio)
+   this.totalglobal =  this.PreciosService.total;
+  }
+      // get precio1(){
+      //   return this.PreciosService.precios;
+      // }
+      
 
-    console.log(this.total);
+   constructor(private PreciosService:PreciosService){
 
    }
-  ngOnInit(): void {
-  }
+  
 
 }
