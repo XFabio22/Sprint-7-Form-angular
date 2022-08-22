@@ -1,3 +1,4 @@
+import { ArrayPrecios } from './../interfaces/Array.interface';
 import { Injectable } from "@angular/core";
 
 @Injectable()
@@ -6,24 +7,27 @@ export class PreciosService{
 
    
 
-    private _precios:number[]=[]
+    private _precios:ArrayPrecios[]=[
+        {
+            nombre:'Pagina web',
+            costo: 500,
+            id: 'web'
+        },
+        {
+            nombre:'SEO',
+            costo: 300,
+            id: 'seo'
+        },
+        {
+            nombre:'ABS',
+            costo: 200,
+            id: 'abs'
+        }
+    ]
 
     get precios(){
         return [...this._precios];
-    }
-    total:number =0 
-
-   calculateTotal(precio:number) {
-    this._precios.push(precio)
-    this.total = 0
-   
-   for(let i = 0; i < this.precios.length; i++ ){
-       this.total += this.precios[i]; 
-   }
-   console.log(this.total)
-  
-  }
-
+    } 
     constructor(){
         console.log('servicio Iniciado')
     }

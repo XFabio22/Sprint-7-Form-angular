@@ -3,23 +3,25 @@
   <p>¿Qué quieres hacer? </p>
   <form >
     <div>
-      <input formControlName='webPage' (click)="paguinas(500)" type="checkbox" >
+      <input class="form-check-input" formControlName='webPage'type="checkbox"(change)="($event)" >
       <label>Fer una pàgina web (500 €)</label>
     </div>
-    <div *ngIf="mostrar">
+    <div>
       <app-panell></app-panell>
     </div>
     <br>
-    <input formControlName='Seo' (click)="valor(300)" type="checkbox" >
+    <input class="form-check-input"   formControlName='Seo' type="checkbox"(change)="($event)" >
   
     <label >Fer una campanya SEO (300 €)</label>
     <br><br>
   
-    <input formControlName='Publicidad'(click)="valor(200)" type="checkbox" >
+    <input class="form-check-input" formControlName='Publicidad'type="checkbox" (change)="($event)">
   
     <label>Fer una campanya de publicitat (200 €)</label>
     <br>
+    
+  <p>Preu:€</p>
+  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   
-  <p>Preu:{{totalglobal}}€</p>
 </div>
