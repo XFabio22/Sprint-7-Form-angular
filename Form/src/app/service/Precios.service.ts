@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 
 export class PreciosService{
 
-   
+   precioTotal:number = 0
 
     private _precios:ArrayPrecios[]=[
         {

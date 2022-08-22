@@ -9,9 +9,15 @@ import { Component,  } from '@angular/core';
 })
 export class HomeComponent  {
 
-   constructor(private PreciosService:PreciosService){
+   constructor(public PreciosService:PreciosService){
 
    }
-  
 
+   cambiosCheckbox(event:any){
+    if(event.target.checked){
+      this.PreciosService.precioTotal += Number(event.target.value);
+   }else{
+    this.PreciosService.precioTotal -= Number(event.target.value);
+   }
+  }
 }
