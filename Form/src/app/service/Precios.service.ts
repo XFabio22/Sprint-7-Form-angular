@@ -11,17 +11,17 @@ export class PreciosService{
         {
             nombre:'Pagina web',
             costo: 500,
-            id: 'web'
+           
         },
         {
-            nombre:'SEO',
+            nombre:'Una consultoria SEO',
             costo: 300,
-            id: 'seo'
+         
         },
         {
-            nombre:'ABS',
+            nombre:'Una campanya de Google Ads',
             costo: 200,
-            id: 'abs'
+        
         }
     ]
 

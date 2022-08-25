@@ -12,6 +12,11 @@ export class HomeComponent  {
    constructor(public PreciosService:PreciosService){
 
    }
+   mostrar:boolean = false 
+   mostrarCambios(){
+    this.mostrar = !this.mostrar
+
+   }
 
    cambiosCheckbox(event:any){
     if(event.target.checked){

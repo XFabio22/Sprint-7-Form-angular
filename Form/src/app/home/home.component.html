@@ -1,27 +1,17 @@
 
 <div class="container">
   <p>¿Qué quieres hacer? </p>
-  <form >
-    <div *ngFor="let obj of PreciosService.precios" >
-      <div>
-        <input class="form-check-input" formControlName='webPage'type="checkbox" [value]="obj.costo" (change)="cambiosCheckbox($event)" >
-        <label>{{obj.nombre}} ({{obj.costo}})</label>
-      </div>
-      
-    </div>
-    
-    <!-- <input class="form-check-input"   formControlName='Seo' type="checkbox"[value]="obj.costo"  (change)="cambiosCheckbox($event)" >
-  
-    <label >Fer una campanya SEO (300 €)</label>
-    <br><br>
-  
-    <input class="form-check-input" formControlName='Publicidad'type="checkbox" [value]="obj.costo"  (change)="cambiosCheckbox($event)">
-  
-    <label>Fer una campanya de publicitat (200 €)</label>
-    <br> -->
-    
  
-  </form>
+
+      <div >
+        <input class="form-check-input" formControlName='webPage'type="checkbox" [value]="" (click)="mostrarCambios()" (change)="cambiosCheckbox($event)" >
+        <label></label>
+        
+      </div>
+      <app-panell></app-panell>
+
+    
+
   <p>Preu:{{PreciosService.precioTotal}}€</p>
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>
