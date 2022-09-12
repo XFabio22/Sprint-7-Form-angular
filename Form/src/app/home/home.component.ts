@@ -1,5 +1,6 @@
 import { PreciosService } from './../service/Precios.service';
 import { Component,  } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,21 +9,37 @@ import { Component,  } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
+  myForm:FormGroup = this.fb.group({
+    web:[false,Validators.required],
+    Seo: [false,Validators.required],
+    publicidad:[false,Validators.required]
+  })
 
-   constructor(public PreciosService:PreciosService){
 
+  personaOp={
+    web:false,
+    Seo:false,
+    publicidad:false
+  }
+
+  precio:number= 0;
+
+
+  
+   constructor(private fb:FormBuilder ){}
+
+   controlarPrecio(valor:number ,obj:string){
+      if(this.myForm.controls[obj].value == true ){
+         this.precio  -=valor  ;
+      }else if (this.myForm.controls[obj].value == false ){
+         this.precio += valor ;
+      }
    }
-   mostrar:boolean = false 
-   mostrarCambios(){
-    this.mostrar = !this.mostrar
 
-   }
-
-   cambiosCheckbox(event:any){
-    if(event.target.checked){
-      this.PreciosService.precioTotal += Number(event.target.value);
-   }else{
-    this.PreciosService.precioTotal -= Number(event.target.value);
-   }
+   guardar(){
+    const FormsValue = { ...this.myForm.value};
+   
+    this.personaOp = FormsValue;
+    console.log(FormsValue);
   }
 }

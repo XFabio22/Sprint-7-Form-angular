@@ -1,17 +1,73 @@
 
-<div class="container">
-  <p>¿Qué quieres hacer? </p>
- 
 
-      <div >
-        <input class="form-check-input" formControlName='webPage'type="checkbox" [value]="" (click)="mostrarCambios()" (change)="cambiosCheckbox($event)" >
-        <label></label>
-        
+<form (ngSubmit)="guardar()" class="mt-5" [formGroup]="myForm">
+  <h3>¿Que quieres hacer?</h3>
+  <div class="row">
+    <div class="col">
+      <div class="form-check">
+        <input
+            class="form-check-input" 
+            type="checkbox" 
+          
+            id="flexCheckWeb"
+            formControlName="web"
+            (click)="controlarPrecio(500,'web')"
+          >
+        <label class="form-check-label" for="flexCheckWeb">
+          Fer una pàgina web (500 €)
+        </label>
       </div>
-      <app-panell></app-panell>
-
-    
-
-  <p>Preu:{{PreciosService.precioTotal}}€</p>
-  <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-check">
+        <input 
+          class="form-check-input"
+           type="checkbox" 
+           (click)="controlarPrecio(300,'Seo')"
+            id="flexCheckSEO" 
+            formControlName="Seo"
+          >
+        <label class="form-check-label" for="flexCheckSEO">
+          Fer una campanya SEO (300 €)
+        </label>
+      </div>
+      <div class="form-check">
+        <input 
+          class="form-check-input" 
+          type="checkbox" 
+          (click)="controlarPrecio(200,'publicidad')"
+          id="flexCheckPublicitat" 
+          formControlName="publicidad"  
+         
+          >
+        <label class="form-check-label" for="flexCheckPublicitat">
+          Fer una campanya de publicitat (200 €)
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <button 
+          type="submit"
+          class="btn btn-primary"
+          (click)=" guardar()"
+          >
+            guardar
+        </button>
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col">
+    <p>{{precio}}</p>
+  </div>
 </div>
+
+<h5>Valor de el formulario</h5>
+<pre>{{myForm.value | json}}</pre>
+<br>
+
+
+<h5>Valid</h5>
+<pre>{{myForm.valid}}</pre>
+<br>
+<pre>condiciones: </pre>

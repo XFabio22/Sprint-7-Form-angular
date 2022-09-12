@@ -11,15 +11,6 @@ export class PanellComponent  {
 
 
   
-  paginasYIdiomas = new FormGroup({
-    paginas: new FormControl(1),
-    idiomas: new FormControl(1)
-  })
-  
-  
-  datos(){
-    
-  }
 
 
   constructor(private PreciosService:PreciosService) { 
