@@ -5,30 +5,6 @@ import { Injectable } from "@angular/core";
 
 export class PreciosService{
 
-   precioTotal:number = 0
-
-    private _precios:ArrayPrecios[]=[
-        {
-            nombre:'Pagina web',
-            costo: 500,
-           
-        },
-        {
-            nombre:'Una consultoria SEO',
-            costo: 300,
-         
-        },
-        {
-            nombre:'Una campanya de Google Ads',
-            costo: 200,
-        
-        }
-    ]
-
-    get precios(){
-        return [...this._precios];
-    } 
-    constructor(){
-        console.log('servicio Iniciado')
-    }
+    constructor(){}
+    precioTotal:number = 0
 }

@@ -1,34 +1,51 @@
-<form >
+<form  [formGroup]="myPanellForm">
     <div class="input-group input-group-sm  mb-3 w-25 ">
         <button 
             class="btn btn btn-warning" 
-            type="button" >
+            type="button" 
+          
+            >
             -
         </button>
         <label>Numero de paginas: </label>
         <input 
             type="number" 
-            class="form-control">
+            class="form-control"
+            formControlName="paginas"
+     
+            >
         <button
             class="btn  btn-warning" 
-            type="button" >
+            type="button"
+        
+            >
             +
             </button>
     </div>
 
-    <div class="input-group input-group-sm  mb-3 w-25">
+    <div 
+        class="input-group         input-group-sm 
+        mb-3 w-25">
         <button 
             class="btn btn btn-warning" 
-            type="button" >
+            type="button"
+         
+            >
             -
         </button>
         <label>Numero de idiomas: </label>
         <input 
             type="number" 
-            class="form-control">
+            class="form-control"
+           
+            formControlName="idiomas"
+            >
+
         <button
             class="btn  btn-warning" 
-            type="button" >
+            type="button"
+       
+            >
             +
         </button>
     </div>
