@@ -27,7 +27,7 @@ export class HomeComponent  {
 
 
   
-   constructor(private fb:FormBuilder ){}
+   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
    
   campoNoEsValido(campo:string){
@@ -42,10 +42,5 @@ export class HomeComponent  {
       }
    }
 
-   guardar(){
-    const FormsValue = { ...this.myForm.value};
-   
-    this.personaOp = FormsValue;
-    console.log(FormsValue);
-  }
+
 }

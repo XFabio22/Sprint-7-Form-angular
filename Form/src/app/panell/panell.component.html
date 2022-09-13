@@ -1,52 +1,59 @@
 <form  [formGroup]="myPanellForm">
     <div class="input-group input-group-sm  mb-3 w-25 ">
+       
+        <label>Numero de paginas: </label>
         <button 
-            class="btn btn btn-warning" 
+            class="btn ms-2 btn-warning"    
             type="button" 
-          
+            (click)="restar(1,'paginas')"
             >
             -
         </button>
-        <label>Numero de paginas: </label>
         <input 
             type="number" 
             class="form-control"
             formControlName="paginas"
+            min="0"
      
-            >
+        >
         <button
             class="btn  btn-warning" 
             type="button"
-        
+            (click)="sumar(1,'paginas')"
             >
             +
-            </button>
+        </button>
     </div>
 
     <div 
-        class="input-group         input-group-sm 
-        mb-3 w-25">
+        class="input-group input-group-sm mb-3 w-25">
+     
+        <label>Numero de idiomas: </label>
         <button 
-            class="btn btn btn-warning" 
+            class="btn ms-2 btn-warning"    
             type="button"
-         
-            >
+            (click)="restar(1,'idiomas')"
+        
+        >
             -
         </button>
-        <label>Numero de idiomas: </label>
         <input 
             type="number" 
             class="form-control"
-           
             formControlName="idiomas"
-            >
+            min="0"
+        >
 
         <button
             class="btn  btn-warning" 
             type="button"
-       
-            >
+            (click)="sumar(1,'idiomas')"
+        >
             +
         </button>
     </div>
 </form>
+
+<h5>Valor de el formulario</h5>
+<pre>{{myPanellForm.value | json}}</pre>
+<br>
