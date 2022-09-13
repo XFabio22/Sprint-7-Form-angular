@@ -1,6 +1,6 @@
 
 
-<form (ngSubmit)="guardar()" class="mt-5" [formGroup]="myForm">
+<form (ngSubmit)="guardar()" class="mt-5 " [formGroup]="myForm">
   <h3>¿Que quieres hacer?</h3>
   <div class="row">
     <div class="col">
@@ -17,11 +17,15 @@
           Fer una pàgina web (500 €)
         </label>
       </div>
+
+      <div *ngIf="campoNoEsValido('web')">
+        <app-panell></app-panell>
+      </div>
       <div class="form-check">
         <input 
           class="form-check-input"
-           type="checkbox" 
-           (click)="controlarPrecio(300,'Seo')"
+          type="checkbox" 
+          (click)="controlarPrecio(300,'Seo')"
             id="flexCheckSEO" 
             formControlName="Seo"
           >
@@ -35,15 +39,15 @@
           type="checkbox" 
           (click)="controlarPrecio(200,'publicidad')"
           id="flexCheckPublicitat" 
-          formControlName="publicidad"  
-         
-          >
+          formControlName="publicidad">
         <label class="form-check-label" for="flexCheckPublicitat">
           Fer una campanya de publicitat (200 €)
         </label>
       </div>
     </div>
   </div>
+
+
   <div class="row">
     <div class="col">
         <button 
@@ -55,10 +59,12 @@
         </button>
     </div>
   </div>
+
 </form>
+
 <div class="row">
   <div class="col">
-    <p>{{precio}}</p>
+    <p>{{precio|number}}</p>
   </div>
 </div>
 

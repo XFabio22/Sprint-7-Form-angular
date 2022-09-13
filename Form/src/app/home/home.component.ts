@@ -25,8 +25,14 @@ export class HomeComponent  {
   precio:number= 0;
 
 
+
   
    constructor(private fb:FormBuilder ){}
+
+   
+  campoNoEsValido(campo:string){
+    return this.myForm.controls[campo].value;
+  }
 
    controlarPrecio(valor:number ,obj:string){
       if(this.myForm.controls[obj].value == true ){
