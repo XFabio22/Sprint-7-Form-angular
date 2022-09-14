@@ -5,14 +5,15 @@
         <button 
             class="btn ms-2 btn-warning"    
             type="button" 
-            (click)="restar(1,'paginas')"
-            (click)="multiValores()"
+            (click)="restar(myPanellForm.value.paginas ,'paginas')"
+            
             >
             -
         </button>
         <input 
             type="number" 
             class="form-control"
+            [(ngModel)]="numPaginas"
             formControlName="paginas"
             min="0"
      
@@ -20,8 +21,8 @@
         <button
             class="btn  btn-warning" 
             type="button"
-            (click)="sumar(1,'paginas')"
-            (click)="multiValores()"
+            (click)="sumar('paginas')"
+           
             >
             +
         </button>
@@ -34,8 +35,8 @@
         <button 
             class="btn ms-2 btn-warning"    
             type="button"
-            (click)="restar(1,'idiomas')"
-            (click)="multiValores()"
+            (click)="restar( myPanellForm.value.idiomas ,'idiomas')"
+            
         
         >
             -
@@ -44,14 +45,15 @@
             type="number" 
             class="form-control"
             formControlName="idiomas"
+            [(ngModel)]="numIdiomas"
             min="0"
         >
 
         <button
             class="btn  btn-warning" 
             type="button"
-            (click)="sumar(1,'idiomas')"
-            (click)="multiValores()"
+            (click)="sumar('idiomas')"
+            
         >
             +
         </button>
