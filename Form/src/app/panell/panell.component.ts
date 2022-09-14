@@ -26,22 +26,28 @@ export class PanellComponent  {
     if( campo === "paginas"){
       this.opiones.paginas += valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.paginas);
+      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
     }else  if( campo === "idiomas"){
       this.opiones.idiomas += valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.idiomas);
+      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
     }
+
+    this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
     console.log(this.opiones)
   }
   restar(valor:number,campo:string){
     if( campo === "paginas"){
       this.opiones.paginas -= valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.paginas);  
+      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
     }else  if( campo === "idiomas"){
       this.opiones.idiomas -= valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.idiomas);
+      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
     }
     console.log(this.opiones)
-
+    
   }
 
   //tareas hacer que sume y reste al campo correcto y que el calor sea igual al de el input

@@ -24,10 +24,13 @@ export class HomeComponent  {
 
   precio:number= 0;
 
+  precioGlobal :number = 0
 
 
-  
-   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
+  get SumaTotal(){
+    return this.PreciosService.precioTotalGlobal 
+  }
+   constructor(private fb:FormBuilder,public PreciosService:PreciosService ){}
 
    
   campoNoEsValido(campo:string){
@@ -37,10 +40,14 @@ export class HomeComponent  {
    controlarPrecio(valor:number ,obj:string){
       if(this.myForm.controls[obj].value == true ){
          this.precio  -=valor  ;
+         this.PreciosService.precioTotalGlobal = this.precio;
       }else if (this.myForm.controls[obj].value == false ){
          this.precio += valor ;
+         this.PreciosService.precioTotalGlobal = this.precio;
       }
    }
+
+   
 
 
 }

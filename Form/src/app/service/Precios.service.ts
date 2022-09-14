@@ -6,5 +6,19 @@ import { Injectable } from "@angular/core";
 export class PreciosService{
 
     constructor(){}
-    precioTotal:number = 0
+    precioTotalGlobal:number = 0
+    
+
+    numeroDe={
+        paginas:0,
+        idiomas:0
+    }
+    sumarTodo(){
+      const multi= (this.numeroDe.paginas * this.numeroDe.idiomas * 30);
+
+      this.precioTotalGlobal + multi;
+        console.log(multi)
+    }
+//llamar la funcion es lo unico que falta
+    
 }
