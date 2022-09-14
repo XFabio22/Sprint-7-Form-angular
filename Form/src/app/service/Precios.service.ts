@@ -7,18 +7,12 @@ export class PreciosService{
 
     constructor(){}
     precioTotalGlobal:number = 0
-    
+    multi :number = 0
 
-    numeroDe={
+    opiones={
         paginas:0,
         idiomas:0
     }
-    sumarTodo(){
-      const multi= (this.numeroDe.paginas * this.numeroDe.idiomas * 30);
-
-      this.precioTotalGlobal + multi;
-        console.log(multi)
-    }
-//llamar la funcion es lo unico que falta
+   
     
 }

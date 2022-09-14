@@ -22,28 +22,22 @@ export class HomeComponent  {
     publicidad:false
   }
 
-  precio:number= 0;
-
-  precioGlobal :number = 0
-
-
   get SumaTotal(){
     return this.PreciosService.precioTotalGlobal 
   }
    constructor(private fb:FormBuilder,public PreciosService:PreciosService ){}
 
-   
-  campoNoEsValido(campo:string){
+   campoNoEsValido(campo:string){
     return this.myForm.controls[campo].value;
   }
 
    controlarPrecio(valor:number ,obj:string){
       if(this.myForm.controls[obj].value == true ){
-         this.precio  -=valor  ;
-         this.PreciosService.precioTotalGlobal = this.precio;
+  
+         this.PreciosService.precioTotalGlobal -= valor
       }else if (this.myForm.controls[obj].value == false ){
-         this.precio += valor ;
-         this.PreciosService.precioTotalGlobal = this.precio;
+     
+         this.PreciosService.precioTotalGlobal += valor
       }
    }
 

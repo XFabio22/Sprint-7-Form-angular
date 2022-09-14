@@ -18,38 +18,48 @@ export class PanellComponent  {
     paginas:0,
     idiomas:0
   }
-
-  totalDePaginas:number = 0 ;
-  totalDeIdiomas:number = 0 ;
+  
+  multiValor:number = 0 ;
 
   sumar(valor:number,campo:string){
     if( campo === "paginas"){
+
       this.opiones.paginas += valor;
+
       this.myPanellForm.controls[campo].setValue(this.opiones.paginas);
-      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
+   
+      
     }else  if( campo === "idiomas"){
       this.opiones.idiomas += valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.idiomas);
-      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
+      
     }
-
-    this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
-    console.log(this.opiones)
+    console.log(this.opiones);
+  
   }
+
   restar(valor:number,campo:string){
+    
     if( campo === "paginas"){
       this.opiones.paginas -= valor;
-      this.myPanellForm.controls[campo].setValue(this.opiones.paginas);  
-      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
+      this.myPanellForm.controls[campo].setValue(this.opiones.paginas);   
+      
     }else  if( campo === "idiomas"){
       this.opiones.idiomas -= valor;
       this.myPanellForm.controls[campo].setValue(this.opiones.idiomas);
-      this.PreciosService.numeroDe = this.myPanellForm.controls[campo].value
+     
     }
     console.log(this.opiones)
-    
+  
   }
 
+
+  multiValores(){
+    this.multiValor = (this.opiones.paginas * this.opiones.idiomas * 30)
+    console.log(this.multiValor)
+    this.PreciosService.precioTotalGlobal += this.multiValor
+
+  }
   //tareas hacer que sume y reste al campo correcto y que el calor sea igual al de el input
   //preuba a crar una array dentro de el objeto para sumar y resatr indeendiente 
 }
