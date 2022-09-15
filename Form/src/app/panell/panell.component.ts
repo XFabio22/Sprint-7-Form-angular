@@ -13,55 +13,71 @@ export class PanellComponent implements OnInit {
 
   constructor(private fb:FormBuilder , private PreciosService:PreciosService ) { }
   myPanellForm :FormGroup = this.fb.group({
-    paginas:[1,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]],
-    idiomas:[1,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]]
+    paginas:[0,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]],
+    idiomas:[0,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]]
   })
 
   ngOnInit(){
+   
+    
     this.myPanellForm.controls.paginas.valueChanges.subscribe((paginas)  =>{
       console.log(paginas);
       this.PreciosService.numPaginas = paginas;
- 
-
+  
     })
 
     this.myPanellForm.controls.idiomas.valueChanges.subscribe((idiomas)  =>{
       console.log(idiomas);
       this.PreciosService.numIdiomas = idiomas;
-     
-
     })
   }
-  numPaginas: number = 1;
-  numIdiomas: number = 1;
-  
+  numPaginas: number = 0;
+  numIdiomas: number = 0;
+  sumaDeValores: number = 0
+  sumarTodo(){
+    this.sumaDeValores =( this.numIdiomas * this.numPaginas)*30 ;
+    console.log("Valores sumados",this.sumaDeValores);
+   
+    
+    
+  }
 
-
+  // 1 tienes que llamarlo solo una vez y ademas de eso que no sume o reste el valor equivocado
   sumar(campo:string){
-  
     if( campo === "paginas"){
       this.numPaginas ++;
-      this.PreciosService.sumaTotal();
+
+    this.sumarTodo();
+    // this.PreciosService.precioTotalGlobal +=this.sumaDeValores 
     }else  if( campo === "idiomas"){
       this.numIdiomas ++;
-      this.PreciosService.sumaTotal();
+      this.sumarTodo();
+      // this.PreciosService.precioTotalGlobal += this.sumaDeValores
     }
+    // this.sumarTodo();
+    // this.PreciosService.precioTotalGlobal +=this.sumaDeValores
+    // return this.PreciosService.precioTotalGlobal +=this.sumaDeValores
     
   }
 
   restar(valor:number,campo:string){
     
-    if( valor > 1 && campo === "paginas" ){
+    if( valor > 0 && campo === "paginas" ){
       this.numPaginas --;     
-      this.PreciosService.sumaTotal();
+
+      this.sumarTodo();
+      
+    
     }
-    else if( valor > 1 && campo === "idiomas"){
+    else if( valor > 0 && campo === "idiomas"){
       this.numIdiomas --;
-      this.PreciosService.sumaTotal();
+      this.sumarTodo();
+
+
     }
     
 
-  
+    //  return this.PreciosService.precioTotalGlobal -=this.sumaDeValores   //this.sumarTodo();   
   }
 
 

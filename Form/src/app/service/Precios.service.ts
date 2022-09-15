@@ -10,30 +10,21 @@ export class PreciosService implements OnInit{
     
     
     precioTotalGlobal:number = 0
-    sumarPaYId:number = 0;
+    sumaDeValores:number = 0;
     numPaginas:number =0;
-
     numIdiomas: number = 0;
-
-   
-    
-
-
-//    tienes un fallo a llamar la funcion probar a cambiar a Meter datos en una array
-
-    sumaTotal(){
-       this.sumarPaYId = (this.numIdiomas + this.numPaginas)*30;
-       (this.precioTotalGlobal +=this.sumarPaYId ) ;
-        console.log("tse",this.numIdiomas);
-
-        console.log("total",this.sumarPaYId );
-    }
     ngOnInit() {
+       this.sumarTodo();
+    }
+    sumarTodo(){
+        this.sumaDeValores =( this.numIdiomas * this.numPaginas)*30 ;
+        this.precioTotalGlobal += this.sumaDeValores;
+        console.log("Valores sumados",this.sumaDeValores);
+
         
-        this.sumaTotal()
         
     }
-
+    
 
   
     

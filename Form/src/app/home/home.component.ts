@@ -1,5 +1,5 @@
 import { PreciosService } from './../service/Precios.service';
-import { Component,  } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -8,9 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit  {
   myForm:FormGroup = this.fb.group({
-    web:[false,Validators.required],
+    web:[false ,Validators.required],
     Seo: [false,Validators.required],
     publicidad:[false,Validators.required]
   })
@@ -23,7 +23,7 @@ export class HomeComponent  {
   }
 
   get SumaTotal(){
-    return this.PreciosService.precioTotalGlobal
+    return this.PreciosService.precioTotalGlobal;
   }
    constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
@@ -42,6 +42,8 @@ export class HomeComponent  {
    }
 
    
-
+  ngOnInit()  {
+     
+  }
 
 }
