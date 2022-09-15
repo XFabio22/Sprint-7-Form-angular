@@ -23,9 +23,9 @@ export class HomeComponent  {
   }
 
   get SumaTotal(){
-    return this.PreciosService.precioTotalGlobal 
+    return this.PreciosService.precioTotalGlobal
   }
-   constructor(private fb:FormBuilder,public PreciosService:PreciosService ){}
+   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
    campoNoEsValido(campo:string){
     return this.myForm.controls[campo].value;
