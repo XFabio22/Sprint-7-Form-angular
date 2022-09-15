@@ -17,7 +17,6 @@ export class PreciosService implements OnInit{
 
     }
 
-
     sumarTodo(){
     this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal)
         console.log("Valores sumados",this.precioTotal);
