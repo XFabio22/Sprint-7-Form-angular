@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit  {
     publicidad:[false,Validators.required]
   })
 
-
+  total:number = 0;
   personaOp={
     web:false,
     Seo:false,
@@ -25,25 +25,27 @@ export class HomeComponent implements OnInit  {
   get SumaTotal(){
     return this.PreciosService.precioTotalGlobal;
   }
-   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
+  constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
-   campoNoEsValido(campo:string){
+  campoNoEsValido(campo:string){
     return this.myForm.controls[campo].value;
   }
 
-   controlarPrecio(valor:number ,obj:string){
+  controlarPrecio(valor:number ,obj:string){
       if(this.myForm.controls[obj].value == true ){
-  
-         this.PreciosService.precioTotalGlobal -= valor
+        this.total -= valor
+        this.PreciosService.precioTotal=this.total;
       }else if (this.myForm.controls[obj].value == false ){
-     
-         this.PreciosService.precioTotalGlobal += valor
+        this.total += valor
+        this.PreciosService.precioTotal=this.total;
+        
       }
-   }
+      this.PreciosService.sumarTodo();
+  }
 
-   
+
+
   ngOnInit()  {
-     
   }
 
 }
