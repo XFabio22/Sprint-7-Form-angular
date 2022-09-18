@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit  {
   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
   campoNoEsValido(campo:string){
+    
     return this.myForm.controls[campo].value;
   }
 
@@ -38,7 +39,6 @@ export class HomeComponent implements OnInit  {
       }else if (this.myForm.controls[obj].value == false ){
         this.total += valor
         this.PreciosService.precioTotal=this.total;
-        
       }
       this.PreciosService.sumarTodo();
   }
@@ -46,6 +46,10 @@ export class HomeComponent implements OnInit  {
 
 
   ngOnInit()  {
+     this.myForm.controls.web.valueChanges.subscribe((web)  =>{
+       console.log(web);
+       this.PreciosService.statusFormWeb = web;
+    })
   }
 
 }
