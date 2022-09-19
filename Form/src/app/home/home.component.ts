@@ -1,6 +1,7 @@
 import { PreciosService } from './../service/Precios.service';
 import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class HomeComponent implements OnInit  {
 
   total:number = 0;
 
+
+  precioSubscription!:Subscription 
   personaOp={
     web:false,
     Seo:false,
@@ -51,9 +54,12 @@ export class HomeComponent implements OnInit  {
   }
 
 
-
+  ngOnDestroy(): void {
+    this.precioSubscription.unsubscribe(); // probar para mañana
+    
+  }      
   ngOnInit()  {
-      this.myForm.controls.web.valueChanges.subscribe((web)  =>{
+      this.precioSubscription = this.myForm.controls.web.valueChanges.subscribe((web)  =>{
       console.log(web);
       this.PreciosService.statusFormWeb = web;
     })
