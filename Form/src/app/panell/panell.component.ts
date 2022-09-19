@@ -15,20 +15,10 @@ export class PanellComponent implements OnInit {
     idiomas:[0,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]]
   })
   ngOnInit(){
-    // this.myPanellForm.controls.paginas.valueChanges.subscribe((paginas)  =>{
-    //   console.log(paginas);
-    //   this.PreciosService.numPaginas = paginas;
-    // })
-    // this.myPanellForm.controls.idiomas.valueChanges.subscribe((idiomas)  =>{
-    //   console.log(idiomas);
-    //   this.PreciosService.numIdiomas = idiomas;
-    // })          //pruba a pasar esto y hacerlo en el service para que cuando to haya nada todo sea 0
-    
   }
   numPaginas: number = 0;
   numIdiomas: number = 0;
   sumaDeValores: number = 0
-
   sumarTodo(){
     this.sumaDeValores =( this.numIdiomas * this.numPaginas)*30 ;
     this.PreciosService.sumaDeValores = this.sumaDeValores;

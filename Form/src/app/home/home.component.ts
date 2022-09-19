@@ -46,9 +46,9 @@ export class HomeComponent implements OnInit  {
 
 
   ngOnInit()  {
-     this.myForm.controls.web.valueChanges.subscribe((web)  =>{
-       console.log(web);
-       this.PreciosService.statusFormWeb = web;
+      this.myForm.controls.web.valueChanges.subscribe((web)  =>{
+      console.log(web);
+      this.PreciosService.statusFormWeb = web;
     })
   }
 
