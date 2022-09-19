@@ -6,6 +6,8 @@ import { Injectable, OnInit } from "@angular/core";
 export class PreciosService implements OnInit{
 
     constructor(){}
+    PresupuestoList:string[] = []
+    // crearas un objeto aqui mismo con todos los dato centralizado y meteras ese obj en la array
 
     
     precioTotalGlobal:number = 0
