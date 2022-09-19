@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { WelcomeComponent } from './welcome/welcome/welcome.component';
+import { PresupuestoListaComponent } from './presupuesto-lista/presupuesto-lista.component';
 
   
 
@@ -17,7 +18,8 @@ import { WelcomeComponent } from './welcome/welcome/welcome.component';
     AppComponent,
     HomeComponent,
     PanellComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PresupuestoListaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,34 @@
 <button class="btn "><a href="/Welcome"><i class="fa-solid fa-arrow-left"></i> </a></button>
 
-<form  class="mt-5 " [formGroup]="myForm">
- 
+<form (ngSubmit)="submitForm()" class="mt-5 " [formGroup]="myForm">
   <h3>¿Que quieres hacer?</h3>
   <div class="row">
     <div class="col">
+      <div class="input-group input-group mb-3 w-50">
+        <label>
+          Nombre de cliente/a:
+        </label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Username" 
+          aria-label="Username"
+          formControlName="nombreCliente"
+        >
+      </div>
+      <div class="input-group input-group  w-50">
+        <label>
+          Nombre de presupuesto:
+        </label>
+        <input
+          type="text" 
+          class="form-control" 
+          placeholder="Nombre de el presupuesto" 
+          aria-label="Username"
+          formControlName="nombreDePresupuesto"
+        >
+      </div>
+
       <div class="form-check">
         <input
             class="form-check-input" 
@@ -45,11 +69,9 @@
           Fer una campanya de publicitat (200 €)
         </label>
       </div>
+      <button class="btn btn-primary "(click)="submitForm()">Submit</button>
     </div>
   </div>
-
-
-
 
 </form>
 

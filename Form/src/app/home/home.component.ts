@@ -10,12 +10,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit  {
   myForm:FormGroup = this.fb.group({
+    nombreCliente:['',[Validators.required,Validators.minLength(3),Validators.pattern(/^[a-z]\d*$/)]],
+    nombreDePresupuesto:['',[Validators.required,Validators.minLength(3),Validators.pattern(/^[a-z]\d*$/)]],
     web:[false ,Validators.required],
     Seo: [false,Validators.required],
-    publicidad:[false,Validators.required]
+    publicidad:[false,Validators.required],
   })
 
   total:number = 0;
+
   personaOp={
     web:false,
     Seo:false,
@@ -41,6 +44,10 @@ export class HomeComponent implements OnInit  {
         this.PreciosService.precioTotal=this.total;
       }
       this.PreciosService.sumarTodo();
+  }
+  submitForm(){
+    console.log(this.myForm);
+    
   }
 
 

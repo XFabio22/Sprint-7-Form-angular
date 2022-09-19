@@ -27,12 +27,9 @@ export class PreciosService implements OnInit{
             this.numIdiomas = 0;
             this.numPaginas = 0;
             this.sumaDeValores  =0;
-            this.precioTotalGlobal = ( this.precioTotal -  this.sumaDeValores )
+            this.precioTotalGlobal = ( this.precioTotal -  this.sumaDeValores );
         }else {
-            this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal)
-            console.log("Valores sumados",this.precioTotal);
-            console.log("Valores x");
-
+            this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal);
         }
     
     }
