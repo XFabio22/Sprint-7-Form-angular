@@ -7,10 +7,7 @@ import { Injectable, OnInit } from "@angular/core";
 export class PreciosService implements OnInit{
 
     constructor(){}
-    PresupuestoList:any[] =[]
-    // crearas un objeto aqui mismo con todos los dato centralizado y meteras ese obj en la array 
-    //ngOnDestroy para el error de el precio
-    
+    PresupuestoList:any[] = [];
     precioTotalGlobal:number = 0
     
     precioTotal:number = 0
@@ -31,9 +28,6 @@ export class PreciosService implements OnInit{
         console.log(obj);
         this.PresupuestoList.push(obj);
         console.log("lista",this.PresupuestoList);
-        
-        
-
     }
     ngOnInit() {
         
@@ -49,13 +43,5 @@ export class PreciosService implements OnInit{
         }else {
             this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal);
         }
-    }
-    getListado(){
-        return {...this.PresupuestoList}
-    }
-    getData(){
-        this.PresupuestoList.map( res => res.json())
-        
-        
     }
 }

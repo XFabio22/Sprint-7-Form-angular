@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit  {
   submitForm(){
   const formValue = {...this.myForm.value}
   this.PreciosService.guardarObj(formValue) ;
+ 
   }
 
 
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit  {
       this.precioSubscription = this.myForm.controls.web.valueChanges.subscribe((web)  =>{
       console.log(web);
       this.PreciosService.statusFormWeb = web;
-    })
+    });
   }
 
 }

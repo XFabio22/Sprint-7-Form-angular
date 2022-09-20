@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PresupuestoListaComponent implements OnInit {
 
-  PresupuestoList:string[] = []
-  constructor(private PreciosService:PreciosService) { }
-  
 
+  constructor(private PreciosService:PreciosService) { }
+  listado = this.PreciosService.PresupuestoList
   ngOnInit(): void {
+  
   }
+
 }
