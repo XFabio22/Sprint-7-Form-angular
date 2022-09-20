@@ -1,3 +1,4 @@
+import { PreciosService } from './../service/Precios.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class PresupuestoListaComponent implements OnInit {
 
   PresupuestoList:string[] = []
-  constructor() { }
+  constructor(private PreciosService:PreciosService) { }
+  
 
   ngOnInit(): void {
   }
-
 }

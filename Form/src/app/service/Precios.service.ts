@@ -1,4 +1,5 @@
-import { ArrayPrecios } from './../interfaces/Array.interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ArrayPrecios, formVal, objval, PresupuestoVal } from './../interfaces/Array.interface';
 import { Injectable, OnInit } from "@angular/core";
 
 @Injectable()
@@ -6,10 +7,9 @@ import { Injectable, OnInit } from "@angular/core";
 export class PreciosService implements OnInit{
 
     constructor(){}
-    PresupuestoList:string[] = []
+    PresupuestoList:any[] =[]
     // crearas un objeto aqui mismo con todos los dato centralizado y meteras ese obj en la array 
     //ngOnDestroy para el error de el precio
-
     
     precioTotalGlobal:number = 0
     
@@ -21,8 +21,23 @@ export class PreciosService implements OnInit{
     numIdiomas: number = 0;
 
     statusFormWeb: boolean =false;
-    ngOnInit() {
+    guardarObj(formValue:formVal){
+        const obj:objval = {
+        formValue,
+        precio: this.precioTotalGlobal,
+        Paginas: this.numPaginas,
+        Idiomas: this.numPaginas
+        }
+        console.log(obj);
+        this.PresupuestoList.push(obj);
+        console.log("lista",this.PresupuestoList);
+        
+        
 
+    }
+    ngOnInit() {
+        
+        
     }
 
     sumarTodo(){
@@ -34,7 +49,13 @@ export class PreciosService implements OnInit{
         }else {
             this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal);
         }
-    
     }
-
+    getListado(){
+        return {...this.PresupuestoList}
+    }
+    getData(){
+        this.PresupuestoList.map( res => res.json())
+        
+        
+    }
 }

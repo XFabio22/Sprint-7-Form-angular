@@ -22,11 +22,14 @@ export class HomeComponent implements OnInit  {
 
 
   precioSubscription!:Subscription 
-  personaOp={
-    web:false,
-    Seo:false,
-    publicidad:false
-  }
+  // personaOp={
+  //   nombreCliente:'',
+  //   nombreDePresupuesto:'',
+  //   web:false,
+  //   Seo:false,
+  //   publicidad:false,
+  
+  // }
 
   get SumaTotal(){
     return this.PreciosService.precioTotalGlobal;
@@ -49,8 +52,8 @@ export class HomeComponent implements OnInit  {
       this.PreciosService.sumarTodo();
   }
   submitForm(){
-    console.log(this.myForm);
-    
+  const formValue = {...this.myForm.value}
+  this.PreciosService.guardarObj(formValue) ;
   }
 
 

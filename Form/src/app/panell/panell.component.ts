@@ -15,7 +15,16 @@ export class PanellComponent implements OnInit {
     idiomas:[0,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]]
   })
   ngOnInit(){
-  }
+    this.myPanellForm.controls.paginas.valueChanges.subscribe((paginas) =>{
+      console.log(paginas);
+      this.PreciosService.numPaginas = paginas;
+    });
+    this.myPanellForm.controls.idiomas.valueChanges.subscribe((idiomas) =>{
+      console.log(idiomas);
+      this.PreciosService.numIdiomas = idiomas;
+    });
+
+}
   numPaginas: number = 0;
   numIdiomas: number = 0;
   sumaDeValores: number = 0
