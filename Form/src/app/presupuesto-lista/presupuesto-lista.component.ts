@@ -9,7 +9,7 @@ export class PresupuestoListaComponent implements OnInit {
 
 
   constructor(private PreciosService:PreciosService) { }
-  listado = this.PreciosService.PresupuestoList
+  
   ngOnInit(): void {
   
   }

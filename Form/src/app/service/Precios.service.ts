@@ -8,6 +8,7 @@ export class PreciosService implements OnInit{
 
     constructor(){}
     PresupuestoList:any[] = [];
+    arrayx:string= ''
     precioTotalGlobal:number = 0
     
     precioTotal:number = 0
@@ -28,10 +29,9 @@ export class PreciosService implements OnInit{
         console.log(obj);
         this.PresupuestoList.push(obj);
         console.log("lista",this.PresupuestoList);
+        
     }
     ngOnInit() {
-        
-        
     }
 
     sumarTodo(){

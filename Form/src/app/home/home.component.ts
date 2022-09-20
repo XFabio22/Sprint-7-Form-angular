@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit  {
   submitForm(){
   const formValue = {...this.myForm.value}
   this.PreciosService.guardarObj(formValue) ;
- 
   }
 
 
