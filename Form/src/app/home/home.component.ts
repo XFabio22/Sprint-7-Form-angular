@@ -2,7 +2,7 @@ import { PreciosService } from './../service/Precios.service';
 import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-
+import { lista } from '../interfaces/Array.interface';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,8 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit  {
   myForm:FormGroup = this.fb.group({
-    nombreCliente:['',[Validators.required,Validators.minLength(3),Validators.pattern(/^[a-z]\d*$/)]],
-    nombreDePresupuesto:['',[Validators.required,Validators.minLength(3),Validators.pattern(/^[a-z]\d*$/)]],
+    nombreCliente:['',Validators.required],
+    nombreDePresupuesto:['',Validators.required],
     web:[false ,Validators.required],
     Seo: [false,Validators.required],
     publicidad:[false,Validators.required],
@@ -51,10 +51,8 @@ export class HomeComponent implements OnInit  {
       }
       this.PreciosService.sumarTodo();
   }
-  submitForm(){
-  const formValue = {...this.myForm.value}
-  this.PreciosService.guardarObj(formValue) ;
-  }
+
+  
 
 
   ngOnDestroy(): void {
@@ -67,5 +65,31 @@ export class HomeComponent implements OnInit  {
       this.PreciosService.statusFormWeb = web;
     });
   }
+  get PresupuestoList() {
+    return this.PreciosService.PresupuestoList;
+  }
+  submitForm(){
+  
+    const NewProject: lista = 
+      {
+        id: this.PresupuestoList.length + 1      ,
+        nombreDePresupuesto: this.myForm.value.nombreDePresupuesto,
+        nombreCliente: this.myForm.value.nombreCliente,
+        date:       new Date(),
+        total:      this.PreciosService.precioTotalGlobal
+      }
 
+    if (this.myForm.valid) {
+      this.PresupuestoList.push(NewProject);
+     
+      this.PreciosService.guardarEnLocal(this.PresupuestoList)
+      this.PreciosService.resetTotal();
+      console.log(this.PresupuestoList);
+    }
+
+    this.myForm.markAllAsTouched();
+  }
 }
+
+  
+

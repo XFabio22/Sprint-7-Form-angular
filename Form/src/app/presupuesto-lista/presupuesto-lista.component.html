@@ -1,10 +1,9 @@
 <h2>Presupuestos Creados</h2>
     <hr>
     <!-- [routerLinkActiveOptions]="{exact:true}"  sirve para decir que tiene que ser exacto -->
-    <ul class="list-group">
-        <li>
-            
-            <!-- https://codedocu.com/Software/Angular/Angular-Error/Angular-Error_colon_-NgFor-only-supports-binding-to-Iterables-such-as-Arrays_dot_?2625 --> 
+    <ul  class="list-group">
+        <li *ngFor="let item of Lista ">
+            {{item.nombreDePresupuesto}}
         </li>
     </ul>
     

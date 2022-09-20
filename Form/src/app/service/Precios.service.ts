@@ -1,14 +1,14 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ArrayPrecios, formVal, objval, PresupuestoVal } from './../interfaces/Array.interface';
+import { lista } from './../interfaces/Array.interface';
+
 import { Injectable, OnInit } from "@angular/core";
 
 @Injectable()
 
 export class PreciosService implements OnInit{
 
-    constructor(){}
-    PresupuestoList:any[] = [];
-    arrayx:string= ''
+    
+   PresupuestoList:lista[] = [];
+
     precioTotalGlobal:number = 0
     
     precioTotal:number = 0
@@ -19,22 +19,29 @@ export class PreciosService implements OnInit{
     numIdiomas: number = 0;
 
     statusFormWeb: boolean =false;
-    guardarObj(formValue:formVal){
-        const obj:objval = {
-        formValue,
-        precio: this.precioTotalGlobal,
-        Paginas: this.numPaginas,
-        Idiomas: this.numPaginas
-        }
-        console.log(obj);
-        this.PresupuestoList.push(obj);
-        console.log("lista",this.PresupuestoList);
-        
-    }
+   
     ngOnInit() {
     }
+    constructor(){
+         this.PresupuestoList = JSON.parse(localStorage.getItem('historial')!)||[];
+    }
+    guardarEnLocal(lista:lista[]){
+        localStorage.setItem('lista', JSON.stringify(lista))
+    }
+    resetTotal(){
+        this.precioTotal= 0;
+        this.precioTotalGlobal= 0;
+        
+    }
 
+    getListFromLocalStorage(item: string) {
+        if (!localStorage.getItem(item)) {
+          return;
+        }
+        JSON.parse(localStorage.getItem(item)!)
+      }
     sumarTodo(){
+
         if(this.statusFormWeb == false){
             this.numIdiomas = 0;
             this.numPaginas = 0;
@@ -44,4 +51,5 @@ export class PreciosService implements OnInit{
             this.precioTotalGlobal = ( this.sumaDeValores + this.precioTotal);
         }
     }
+
 }
