@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit  {
   })
 
   
-
+  
   get SumaTotal(){
-    return this.PreciosService.precioTotalGlobal;
+    return this.PreciosService.totalPrice();
   }
   constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
@@ -43,11 +43,20 @@ export class HomeComponent implements OnInit  {
 
 
   ngOnInit()  {
-      this.myForm.controls.web.valueChanges.subscribe((web)  =>{
-      console.log(web);
-      this.PreciosService.statusFormWeb = web;
+      this.myForm.controls.web.valueChanges.subscribe((web:boolean)  =>{
+      this.PreciosService.Opciones(web,500)
+      
+    });
+    this.myForm.controls.web.valueChanges.subscribe((Seo:boolean)  =>{
+      this.PreciosService.Opciones(Seo,300)
+      // this.PreciosService.totalPrice();
+    });
+    this.myForm.controls.web.valueChanges.subscribe((publicidad:boolean)  =>{
+      this.PreciosService.Opciones(publicidad,200)
+      // this.PreciosService.totalPrice();
     });
     
+    this.PreciosService.totalPrice();
   }
   get PresupuestoList() {
     return this.PreciosService.PresupuestoList;
@@ -56,10 +65,9 @@ export class HomeComponent implements OnInit  {
   
     const NewProject: lista = 
       {
-        id: this.PresupuestoList.length + 1      ,
+        index: this.PresupuestoList.length + 1      ,
         nombreDePresupuesto: this.myForm.value.nombreDePresupuesto,
         nombreCliente: this.myForm.value.nombreCliente,
-        date:       new Date(),
         total:      this.PreciosService.precioTotalGlobal
       }
     if(this.myForm.invalid){
@@ -71,7 +79,8 @@ export class HomeComponent implements OnInit  {
       this.PreciosService.resetTotal();
       console.log(this.PresupuestoList);
     } 
-    // this.myForm.reset();
+    this.myForm.reset();
+
   }
 }
 

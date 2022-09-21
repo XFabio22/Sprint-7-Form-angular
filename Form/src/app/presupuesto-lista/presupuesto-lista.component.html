@@ -1,46 +1,20 @@
 <h2>Presupuestos Creados</h2>
     <hr>
     <!-- [routerLinkActiveOptions]="{exact:true}"  sirve para decir que tiene que ser exacto -->
-    <ul  class="list-group">
-        
-            <!-- Button trigger modal -->
-            <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-                Lista de Presupuestos
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel3" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel3">Lista de Presupuestos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                            <table   class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Cliente/a</th>
-                                    <th scope="col">Nombre de el Presupuesto</th>
-                                    <th scope="col">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody  *ngFor="let item of Lista ">
-                                <tr>
-                                    <th scope="row">{{item.id}}</th>
-                                    <td>{{item.nombreCliente}}</td>
-                                    <td>{{item.nombreDePresupuesto}}</td>
-                                    <td>{{item.total}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-    </ul>
-    
+    <table   class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cliente/a</th>
+            <th scope="col">Nombre de el Presupuesto</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody  *ngFor="let item of Lista ">
+        <tr>
+            <th scope="row">{{item.index}}</th>
+            <td>{{item.nombreCliente}}</td>
+            <td>{{item.nombreDePresupuesto}}</td>
+            <td>{{item.total| number}}€</td>
+        </tr>
+        </tbody>

@@ -23,12 +23,16 @@ export class PanellComponent implements OnInit {
       console.log(idiomas);
       this.PreciosService.numIdiomas = idiomas;
     });
-
+    this.panelPrice();
 }
   numPaginas: number = 0;
   numIdiomas: number = 0;
   sumaDeValores: number = 0
 
+  panelPrice(){
+    this.PreciosService.totalPanel = (this.numIdiomas + this.numPaginas)*30
+    
+  }
 
   sumar(campo:string){
     if( campo === "paginas"){
@@ -36,6 +40,7 @@ export class PanellComponent implements OnInit {
     }else  if( campo === "idiomas"){
       this.numIdiomas ++;
     }
+    this.panelPrice();
   }
 
   restar(valor:number,campo:string){
@@ -45,5 +50,6 @@ export class PanellComponent implements OnInit {
     else if( valor > 0 && campo === "idiomas"){
       this.numIdiomas --;
     }
+    this.panelPrice();
   }
 }

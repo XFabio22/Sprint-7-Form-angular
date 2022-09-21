@@ -1,7 +1,6 @@
 export interface lista {
-    id:         number;
+    index:         number;
     nombreDePresupuesto: string;
     nombreCliente: string;
-    date:       Date;
     total:      number
 }
