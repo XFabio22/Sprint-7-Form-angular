@@ -3,6 +3,7 @@ import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { lista } from '../interfaces/Array.interface';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-home',
@@ -18,18 +19,7 @@ export class HomeComponent implements OnInit  {
     publicidad:[false,Validators.required],
   })
 
-  total:number = 0;
-
-
-  precioSubscription!:Subscription 
-  // personaOp={
-  //   nombreCliente:'',
-  //   nombreDePresupuesto:'',
-  //   web:false,
-  //   Seo:false,
-  //   publicidad:false,
   
-  // }
 
   get SumaTotal(){
     return this.PreciosService.precioTotalGlobal;
@@ -42,28 +32,22 @@ export class HomeComponent implements OnInit  {
   }
 
   controlarPrecio(valor:number ,obj:string){
-      if(this.myForm.controls[obj].value == true ){
-        this.total -= valor
-        this.PreciosService.precioTotal=this.total;
-      }else if (this.myForm.controls[obj].value == false ){
-        this.total += valor
-        this.PreciosService.precioTotal=this.total;
+      if(this.myForm.controls[obj].value == false ){
+        this.PreciosService.totalHome += valor
+      }else if (this.myForm.controls[obj].value == true ){
+        this.PreciosService.totalHome -= valor
       }
-      this.PreciosService.sumarTodo();
+      
+      
   }
 
-  
 
-
-  ngOnDestroy(): void {
-    this.precioSubscription.unsubscribe(); // probar para mañana
-    
-  }      
   ngOnInit()  {
-      this.precioSubscription = this.myForm.controls.web.valueChanges.subscribe((web)  =>{
+      this.myForm.controls.web.valueChanges.subscribe((web)  =>{
       console.log(web);
       this.PreciosService.statusFormWeb = web;
     });
+    
   }
   get PresupuestoList() {
     return this.PreciosService.PresupuestoList;
@@ -78,16 +62,16 @@ export class HomeComponent implements OnInit  {
         date:       new Date(),
         total:      this.PreciosService.precioTotalGlobal
       }
-
-    if (this.myForm.valid) {
+    if(this.myForm.invalid){
+        this.myForm.markAllAsTouched();
+        return;
+    }else if (this.myForm.valid) {
       this.PresupuestoList.push(NewProject);
-     
       this.PreciosService.guardarEnLocal(this.PresupuestoList)
       this.PreciosService.resetTotal();
       console.log(this.PresupuestoList);
-    }
-
-    this.myForm.markAllAsTouched();
+    } 
+    // this.myForm.reset();
   }
 }
 

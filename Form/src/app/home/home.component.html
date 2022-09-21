@@ -1,6 +1,6 @@
 
 <div class="row container-fluid mt-4">
-  <div class="col-3">
+  <div class="col-3 ms-4">
     <button class="btn "><a href="/Welcome"><i class="fa-solid fa-arrow-left"></i> </a></button>
     <app-presupuesto-lista></app-presupuesto-lista>
   </div>
@@ -87,7 +87,11 @@
       </div>
   
     </div>
-  
+    <span>Valid</span>
+    <pre>{{myForm.valid}}</pre>
+    <span>value</span>
+    <pre>{{myForm.value | json }}</pre>
+    
 </div>
 
 

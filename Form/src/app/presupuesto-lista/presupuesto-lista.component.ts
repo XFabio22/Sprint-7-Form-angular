@@ -8,7 +8,7 @@ export class PresupuestoListaComponent implements OnInit {
   constructor(private PreciosService:PreciosService) { }
   ngOnInit(): void {
     this.PreciosService.getListFromLocalStorage('list');
-   }
+  }
 
     get Lista() {
       return this.PreciosService.PresupuestoList;

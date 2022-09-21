@@ -28,30 +28,22 @@ export class PanellComponent implements OnInit {
   numPaginas: number = 0;
   numIdiomas: number = 0;
   sumaDeValores: number = 0
-  sumarTodo(){
-    this.sumaDeValores =( this.numIdiomas * this.numPaginas)*30 ;
-    this.PreciosService.sumaDeValores = this.sumaDeValores;
-    this.PreciosService.sumarTodo();
-  }
+
 
   sumar(campo:string){
     if( campo === "paginas"){
       this.numPaginas ++
-    this.sumarTodo();
     }else  if( campo === "idiomas"){
       this.numIdiomas ++;
-      this.sumarTodo();
     }
   }
 
   restar(valor:number,campo:string){
     if( valor > 0 && campo === "paginas" ){
       this.numPaginas --;     
-      this.sumarTodo();
     }
     else if( valor > 0 && campo === "idiomas"){
       this.numIdiomas --;
-      this.sumarTodo();
     }
   }
 }
