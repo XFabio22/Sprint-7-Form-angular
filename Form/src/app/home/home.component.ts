@@ -42,6 +42,9 @@ controlarPrecio(valor:number ,obj:string){
       this.PreciosService.statusFormWeb =web
       this.PreciosService.totalPrice();
     });
+    if(this.myForm.controls.web.value === false ){
+      this.PreciosService.totalPanel = 0;
+    }
   }
 
   get PresupuestoList() {
@@ -57,16 +60,18 @@ controlarPrecio(valor:number ,obj:string){
         fecha: new Date,
         total: this.PreciosService.precioTotalGlobal
       }
+      
     if(this.myForm.invalid){
         this.myForm.markAllAsTouched();
         return;
     }else if (this.myForm.valid) {
+      NuevoPresupuesto.nombreCliente.toUpperCase
       this.PresupuestoList.push(NuevoPresupuesto);
       this.PreciosService.guardarEnLocal(this.PresupuestoList)
       this.PreciosService.resetTotal();
       console.log(this.PresupuestoList);
       this.PreciosService.totalPrice();
-      this.myForm.reset();
+      this.myForm.reset({publicidad:false,Seo:false,web:false}); //manera de hacer el reset y no dejar los valores en NULL
     } 
   }
 }

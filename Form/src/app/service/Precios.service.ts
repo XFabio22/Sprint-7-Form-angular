@@ -20,6 +20,10 @@ export class PreciosService implements OnInit{
 
     statusFormWeb: boolean =false;
     ngOnInit() {
+        if(this.statusFormWeb == false){
+            this.numIdiomas = 0;
+            this.numPaginas = 0;
+            this.totalPanel = 0}
     }
     constructor(){
 
@@ -45,6 +49,9 @@ export class PreciosService implements OnInit{
     
 
     totalPrice(){
+        if(this.statusFormWeb === false ){
+            this.precioTotalGlobal = (this.totalHome - this.totalPanel)
+        }
         this.precioTotalGlobal = (this.totalHome + this.totalPanel );
         return this.precioTotalGlobal;
     }
@@ -58,8 +65,30 @@ export class PreciosService implements OnInit{
     }
 
     ordenarPorAz(){
-        this.PresupuestoList.map((item)=> item.nombreCliente).sort();
+        this.PresupuestoList.sort((a,b)  =>{
+            if (a.nombreCliente < b.nombreCliente){ //a es menor que b según criterio de ordenamiento
+            return -1;
+            }
+            if (a.nombreCliente > b.nombreCliente){ //a es mayor que b según criterio de ordenamiento
+            return 1
+            }
+            return 0; // a debe ser igual b
+        })
         console.log(this.PresupuestoList);
-        
+    }
+
+ordenPorNum(){
+    this.PresupuestoList.sort((a,b) =>{
+            if(a.fecha < b.fecha){
+                return -1
+            }if (a.fecha > b.fecha){ 
+                return 1
+            }
+            return 0; 
+        })
+
+    }
+    reset(){
+        this.getListFromLocalStorage('lista');
     }
 }

@@ -17,6 +17,7 @@
                 placeholder="Username" 
                 aria-label="Username"
                 formControlName="nombreCliente"
+                
               >
             </div>
             <div class="input-group input-group  w-50">
@@ -73,7 +74,7 @@
                 Fer una campanya de publicitat (200 €)
               </label>
             </div>
-            <button class="btn btn-primary "(click)="submitForm">Submit</button>
+            <button class="btn btn-primary "[disabled]="myForm.invalid"  (click)="submitForm">Submit</button>
           </div>
         </div>
       

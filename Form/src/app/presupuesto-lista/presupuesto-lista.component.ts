@@ -20,4 +20,11 @@ export class PresupuestoListaComponent implements OnInit {
     ordenarPorAz(){
       this.PreciosService.ordenarPorAz();
     }  
+
+    ordenPorNum(){
+      this.PreciosService.ordenPorNum();
+    }
+    reset(){
+      this.PreciosService.reset()
+    }
 }
