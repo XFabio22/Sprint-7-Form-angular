@@ -22,25 +22,17 @@ export class PreciosService implements OnInit{
     ngOnInit() {
     }
     constructor(){
+
+        if(this.statusFormWeb == false){
+            this.numIdiomas = 0;
+            this.numPaginas = 0;
+            this.totalPanel = 0;
+        }
         // this.PresupuestoList = JSON.parse(localStorage.getItem('historial')!)||[];
-        
     }
     guardarEnLocal(lista:lista[]){
         localStorage.setItem('lista', JSON.stringify(lista))
     }
-
-    Opciones(campo: boolean, precio: number) {
-        if (campo == true) {
-            this.totalHome += precio;
-        } else {
-            this.totalHome -= precio;
-        }
-    }
-    totalPrice(){
-        this.precioTotalGlobal = (this.totalHome + this.totalPanel );
-        return this.precioTotalGlobal;
-    }
-
     resetTotal(){
         this.totalPanel= 0;
         this.totalHome= 0;
@@ -48,14 +40,26 @@ export class PreciosService implements OnInit{
         this.numIdiomas = 0;
         this.numPaginas = 0;
         console.log("global",this.precioTotalGlobal)
+        console.log("home",this.totalHome)
     }
+    
+
+    totalPrice(){
+        this.precioTotalGlobal = (this.totalHome + this.totalPanel );
+        return this.precioTotalGlobal;
+    }
+
 
     getListFromLocalStorage(item: string) {
         if (!localStorage.getItem(item)) {
         return;
         }
-        JSON.parse(localStorage.getItem(item)!)
+        this.PresupuestoList = JSON.parse(localStorage.getItem(item)!)||[];
     }
-    
 
+    ordenarPorAz(){
+        this.PresupuestoList.map((item)=> item.nombreCliente).sort();
+        console.log(this.PresupuestoList);
+        
+    }
 }

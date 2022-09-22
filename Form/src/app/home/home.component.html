@@ -1,7 +1,7 @@
 
 <div class="row container-fluid ms-5">
     <div class="col-12">
-     
+    
       <form (ngSubmit)="submitForm()" class="mt-5 " [formGroup]="myForm">
         <button class="btn "><a href="/Welcome"><i class="fa-solid fa-arrow-left"></i> </a></button>
         <h3>¿Que quieres hacer?</h3>
@@ -38,6 +38,7 @@
                   type="checkbox" 
                   id="flexCheckWeb"
                   formControlName="web"
+                  (click)="controlarPrecio(500,'web')"
                 >
               <label class="form-check-label" for="flexCheckWeb">
                 Fer una pàgina web (500 €)
@@ -53,6 +54,7 @@
                 type="checkbox" 
                   id="flexCheckSEO" 
                   formControlName="Seo"
+                  (click)="controlarPrecio(300,'Seo')"
                 >
               <label class="form-check-label" for="flexCheckSEO">
                 Fer una campanya SEO (300 €)
@@ -63,7 +65,10 @@
                 class="form-check-input" 
                 type="checkbox"
                 id="flexCheckPublicitat" 
-                formControlName="publicidad">
+                formControlName="publicidad"
+                (click)="controlarPrecio(200,'publicidad')"
+                >
+            
               <label class="form-check-label" for="flexCheckPublicitat">
                 Fer una campanya de publicitat (200 €)
               </label>
@@ -80,10 +85,11 @@
           <p>{{ SumaTotal|number}}€</p>
         </div>
       </div>
-      <div class="col-12 ms-4">
-        <app-presupuesto-lista></app-presupuesto-lista>
-      </div>
+      
   
+    </div>
+    <div class="col-12 ms-4">
+      <app-presupuesto-lista></app-presupuesto-lista>
     </div>
     <span>Valid</span>
     <pre>{{myForm.valid}}</pre>

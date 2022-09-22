@@ -19,70 +19,55 @@ export class HomeComponent implements OnInit  {
     publicidad:[false,Validators.required],
   })
 
-  
-  
-  get SumaTotal(){
-    return this.PreciosService.totalPrice();
-  }
-  constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
+get SumaTotal(){
+  return this.PreciosService.totalPrice();
+}
 
-  campoNoEsValido(campo:string){
-    
-    return this.myForm.controls[campo].value;
-  }
+constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
-  controlarPrecio(valor:number ,obj:string){
-      if(this.myForm.controls[obj].value == false ){
-        this.PreciosService.totalHome += valor
-      }else if (this.myForm.controls[obj].value == true ){
-        this.PreciosService.totalHome -= valor
-      }
-      
-      
-  }
+campoNoEsValido(campo:string){
+  return this.myForm.controls[campo].value;
+}
 
+controlarPrecio(valor:number ,obj:string){
+  if(this.myForm.controls[obj].value ){
+    this.PreciosService.totalHome -= valor
+  }else {
+    this.PreciosService.totalHome += valor
+  }
+}
 
   ngOnInit()  {
       this.myForm.controls.web.valueChanges.subscribe((web:boolean)  =>{
-      this.PreciosService.Opciones(web,500)
-      
+      this.PreciosService.statusFormWeb =web
+      this.PreciosService.totalPrice();
     });
-    this.myForm.controls.web.valueChanges.subscribe((Seo:boolean)  =>{
-      this.PreciosService.Opciones(Seo,300)
-      // this.PreciosService.totalPrice();
-    });
-    this.myForm.controls.web.valueChanges.subscribe((publicidad:boolean)  =>{
-      this.PreciosService.Opciones(publicidad,200)
-      // this.PreciosService.totalPrice();
-    });
-    
-    this.PreciosService.totalPrice();
   }
+
   get PresupuestoList() {
     return this.PreciosService.PresupuestoList;
   }
+
   submitForm(){
-  
-    const NewProject: lista = 
+    const NuevoPresupuesto: lista = 
       {
         index: this.PresupuestoList.length + 1      ,
         nombreDePresupuesto: this.myForm.value.nombreDePresupuesto,
         nombreCliente: this.myForm.value.nombreCliente,
-        total:      this.PreciosService.precioTotalGlobal
+        fecha: new Date,
+        total: this.PreciosService.precioTotalGlobal
       }
     if(this.myForm.invalid){
         this.myForm.markAllAsTouched();
         return;
     }else if (this.myForm.valid) {
-      this.PresupuestoList.push(NewProject);
+      this.PresupuestoList.push(NuevoPresupuesto);
       this.PreciosService.guardarEnLocal(this.PresupuestoList)
       this.PreciosService.resetTotal();
       console.log(this.PresupuestoList);
+      this.PreciosService.totalPrice();
+      this.myForm.reset();
     } 
-    this.myForm.reset();
-
   }
 }
-
-  
 

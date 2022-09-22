@@ -1,20 +1,29 @@
 <h2>Presupuestos Creados</h2>
     <hr>
-    <!-- [routerLinkActiveOptions]="{exact:true}"  sirve para decir que tiene que ser exacto -->
-    <table   class="table">
+    <div class=" d-grid gap-2 d-md-flex justify-content-md-end" role="group">
+        <button (click)="ordenarPorAz()"  type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-down-a-z"></i></button>
+        <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-down-1-9"></i></button>
+        <button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-rotate-right"></i></button>
+    </div>
+    <table  class="table">
+        
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Cliente/a</th>
             <th scope="col">Nombre de el Presupuesto</th>
             <th scope="col">Total</th>
+            <th scope="col">Fecha</th>
+            
+            
         </tr>
         </thead>
         <tbody  *ngFor="let item of Lista ">
         <tr>
             <th scope="row">{{item.index}}</th>
-            <td>{{item.nombreCliente}}</td>
+            <td>{{item.nombreCliente }}</td>
             <td>{{item.nombreDePresupuesto}}</td>
             <td>{{item.total| number}}€</td>
+            <td>{{item.fecha |date}}</td>
         </tr>
         </tbody>
