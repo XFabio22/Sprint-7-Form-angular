@@ -26,6 +26,7 @@ get SumaTotal(){
 constructor(private fb:FormBuilder,private PreciosService:PreciosService ){}
 
 campoNoEsValido(campo:string){
+  
   return this.myForm.controls[campo].value;
 }
 

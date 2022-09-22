@@ -27,6 +27,7 @@ export class PreciosService implements OnInit{
     }
     constructor(){
 
+        
         if(this.statusFormWeb == false){
             this.numIdiomas = 0;
             this.numPaginas = 0;
