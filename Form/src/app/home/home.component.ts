@@ -1,16 +1,14 @@
 import { PreciosService } from './../service/Precios.service';
-import { Component,  OnInit } from '@angular/core';
+import { Component,  OnChanges,  OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { lista } from '../interfaces/Array.interface';
-import { __values } from 'tslib';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit  {
+export class HomeComponent implements OnInit,OnChanges  {
   myForm:FormGroup = this.fb.group({
     nombreCliente:['',Validators.required],
     nombreDePresupuesto:['',Validators.required],
@@ -30,28 +28,42 @@ campoNoEsValido(campo:string){
   return this.myForm.controls[campo].value;
 }
 
-controlarPrecio(valor:number ,obj:string){
-  if(this.myForm.controls[obj].value ){
-    this.PreciosService.totalHome -= valor
-  }else {
-    this.PreciosService.totalHome += valor
-  }
+
+ngOnChanges(changes: SimpleChanges): void {
+  console.log(changes);
+  
 }
 
   ngOnInit()  {
       this.myForm.controls.web.valueChanges.subscribe((web:boolean)  =>{
-      this.PreciosService.statusFormWeb =web
-      this.PreciosService.totalPrice();
+      this.PreciosService.ControlDelPanel(web,500)
+      this.controlarPrecio(web,500);
+    
     });
-    if(this.myForm.controls.web.value === false ){
-      this.PreciosService.totalPanel = 0;
-    }
+    this.myForm.controls.Seo.valueChanges.subscribe((Seo:boolean)  =>{
+      this.PreciosService.ControlDelPanel(Seo,300)
+      this.controlarPrecio(Seo,300);
+    
+    });
+    this.myForm.controls.publicidad.valueChanges.subscribe((publicidad:boolean)  =>{
+      this.PreciosService.ControlDelPanel(publicidad,200)
+      this.controlarPrecio(publicidad,200);
+    
+    });
   }
-
+  estado !:boolean 
   get PresupuestoList() {
     return this.PreciosService.PresupuestoList;
   }
-
+  total:number = 0;
+  controlarPrecio(campo:boolean , valor:number){
+    if(campo  ){
+          this.PreciosService.totalHome += valor
+          
+    }else  {
+      this.PreciosService.totalHome -= valor
+    }
+  }
   submitForm(){
     const NuevoPresupuesto: lista = 
       {
@@ -69,9 +81,9 @@ controlarPrecio(valor:number ,obj:string){
       NuevoPresupuesto.nombreCliente.toUpperCase
       this.PresupuestoList.push(NuevoPresupuesto);
       this.PreciosService.guardarEnLocal(this.PresupuestoList)
-      this.PreciosService.resetTotal();
-      console.log(this.PresupuestoList);
       this.PreciosService.totalPrice();
+      console.log(this.PresupuestoList);
+      this.PreciosService.restarTotal();
       this.myForm.reset({publicidad:false,Seo:false,web:false}); //manera de hacer el reset y no dejar los valores en NULL
     } 
   }

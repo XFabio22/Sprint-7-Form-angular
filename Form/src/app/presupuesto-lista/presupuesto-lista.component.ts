@@ -13,10 +13,7 @@ export class PresupuestoListaComponent implements OnInit {
     get Lista() {
       return this.PreciosService.PresupuestoList;
     }
-//     const result4 = array.map((movie) => movie.title).sort().slice(0, 20);
-// console.log('EXERCICE 4 ->', result4);
-// return result4;
-// }
+
     ordenarPorAz(){
       this.PreciosService.ordenarPorAz();
     }  

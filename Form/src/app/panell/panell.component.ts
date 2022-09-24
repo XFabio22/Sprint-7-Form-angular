@@ -15,19 +15,19 @@ export class PanellComponent implements OnInit {
     idiomas:[0,[Validators.required , Validators.pattern(/^[1-9]\d*$/)]]
   })
   ngOnInit(){
-    this.myPanellForm.controls.paginas.valueChanges.subscribe((paginas) =>{
-      console.log(paginas);
-      this.PreciosService.numPaginas = paginas;
-    });
-    this.myPanellForm.controls.idiomas.valueChanges.subscribe((idiomas) =>{
-      console.log(idiomas);
-      this.PreciosService.numIdiomas = idiomas;
-    });
-    this.panelPrice();
+    // this.myPanellForm.controls.paginas.valueChanges.subscribe((valor:number) =>{
+    //   console.log(valor);
+    //   this.PreciosService.panelPrice(valor)
+    // });
+    // this.myPanellForm.controls.idiomas.valueChanges.subscribe((valor:number) =>{
+    //   console.log(valor);
+    //   this.PreciosService
+    // });
+    
 }
   numPaginas: number = 0;
   numIdiomas: number = 0;
-  sumaDeValores: number = 0
+
 
   panelPrice(){
     this.PreciosService.totalPanel = (this.numIdiomas + this.numPaginas)*30
@@ -41,6 +41,7 @@ export class PanellComponent implements OnInit {
       this.numIdiomas ++;
     }
     this.panelPrice();
+    
   }
 
   restar(valor:number,campo:string){
@@ -50,6 +51,7 @@ export class PanellComponent implements OnInit {
     else if( valor > 0 && campo === "idiomas"){
       this.numIdiomas --;
     }
+    
     this.panelPrice();
   }
 }
