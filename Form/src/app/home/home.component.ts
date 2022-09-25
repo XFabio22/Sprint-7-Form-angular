@@ -67,7 +67,7 @@ ngOnChanges(changes: SimpleChanges): void {
   submitForm(){
     const NuevoPresupuesto: lista = 
       {
-        index: this.PresupuestoList.length + 1      ,
+        
         nombreDePresupuesto: this.myForm.value.nombreDePresupuesto,
         nombreCliente: this.myForm.value.nombreCliente,
         fecha: new Date,
