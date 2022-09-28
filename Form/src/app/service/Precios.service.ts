@@ -36,7 +36,7 @@ export class PreciosService implements OnInit {
     }
     restarTotal(){
         this.totalPanel = 0;
-        // this.totalHome = 0 /// esta puta mierda tarde 2dias mas :)
+        this.totalHome = 0 /// esta puta mierda tarde 2dias mas :)
         this.precioTotalGlobal= 0;
     }
 

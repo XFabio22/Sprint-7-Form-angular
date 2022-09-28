@@ -37,17 +37,17 @@ ngOnChanges(changes: SimpleChanges): void {
   ngOnInit()  {
       this.myForm.controls.web.valueChanges.subscribe((web:boolean)  =>{
       this.PreciosService.ControlDelPanel(web,500)
-      this.controlarPrecio(web,500);
+    
     
     });
     this.myForm.controls.Seo.valueChanges.subscribe((Seo:boolean)  =>{
       this.PreciosService.ControlDelPanel(Seo,300)
-      this.controlarPrecio(Seo,300);
+    
     
     });
     this.myForm.controls.publicidad.valueChanges.subscribe((publicidad:boolean)  =>{
       this.PreciosService.ControlDelPanel(publicidad,200)
-      this.controlarPrecio(publicidad,200);
+      
     
     });
   }
@@ -56,12 +56,12 @@ ngOnChanges(changes: SimpleChanges): void {
     return this.PreciosService.PresupuestoList;
   }
   total:number = 0;
-  controlarPrecio(campo:boolean , valor:number){
-    if(campo  ){
-          this.PreciosService.totalHome += valor
+  controlarPrecio(campo:string , valor:number){
+    if(this.myForm.controls[campo].value == true){
+          this.PreciosService.totalHome -= valor
           
-    }else  {
-      this.PreciosService.totalHome -= valor
+    }else if (this.myForm.controls[campo].value == false)  {
+      this.PreciosService.totalHome += valor
     }
   }
   submitForm(){
